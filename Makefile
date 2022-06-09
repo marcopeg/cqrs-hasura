@@ -88,4 +88,16 @@ migrate-create:
 #
 
 metadata-export:
-  @hasura metadata export --project cqrs-v1
+	@hasura metadata export --project cqrs-v1
+
+metadata-apply:
+	@hasura metadata apply --project cqrs-v1
+
+
+#
+# PostgreSQL Seed Utilities
+#
+
+seed-apply:
+	@echo "Seeding the main database from: \"$(seed).sql\"..."
+	@hasura seed apply --project cqrs-v1 --database-name default --file $(seed).sql
