@@ -7,3 +7,12 @@
     - GET
   name: public commands
   comment: null
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: get_commands_simple
+  url: commands_simple
+  methods:
+    - GET
+  name: get_commands_simple
+  comment: getting only 2 fields

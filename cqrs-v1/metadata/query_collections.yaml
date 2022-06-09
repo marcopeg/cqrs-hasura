@@ -12,3 +12,11 @@
           		payload
           	}
           }
+      - name: get_commands_simple
+        query: |
+          query MyQuery {
+          	commands {
+          		cmd_id
+          		cmd_ref
+          	}
+          }
