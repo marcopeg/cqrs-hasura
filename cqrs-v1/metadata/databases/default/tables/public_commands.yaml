@@ -1,6 +1,17 @@
 table:
   schema: public
   name: commands
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - cmd_id
+        - payload
+        - cmd_ref
+        - cmd_type
+        - created_at
+      filter: {}
+      limit: 2
 event_triggers:
   - name: foobar
     definition:

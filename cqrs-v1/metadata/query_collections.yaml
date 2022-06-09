@@ -1,1 +1,14 @@
-[]
+- name: allowed-queries
+  definition:
+    queries:
+      - name: public commands
+        query: |
+          query MyQuery {
+          	commands {
+          		cmd_id
+          		cmd_type
+          		cmd_ref
+          		created_at
+          		payload
+          	}
+          }

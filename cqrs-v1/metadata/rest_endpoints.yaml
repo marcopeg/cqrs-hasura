@@ -1,1 +1,9 @@
-[]
+- definition:
+    query:
+      collection_name: allowed-queries
+      query_name: public commands
+  url: commands
+  methods:
+    - GET
+  name: public commands
+  comment: null
