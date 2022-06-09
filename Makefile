@@ -40,15 +40,15 @@ reset: stop clear start
 
 init:
 	@echo "Applying migrations to all databases..."
-	@hasura migrate apply --project hasura-ecomm --all-databases
+	@hasura migrate apply --project cqrs-v1 --all-databases
 	@echo "Applying Hasura metadata..."
-	@hasura metadata apply --project hasura-ecomm
+	@hasura metadata apply --project cqrs-v1
 	@echo "Seeding the main database from: \"$(seed).sql\"..."
-	@hasura seed apply --project hasura-ecomm --database-name default --file $(seed).sql
+	@hasura seed apply --project cqrs-v1 --database-name default --file $(seed).sql
 
 seed:
 	@echo "Seeding the main database from: \"$(seed).sql\"..."
-	@hasura seed apply --project hasura-ecomm --database-name default --file $(seed).sql
+	@hasura seed apply --project cqrs-v1 --database-name default --file $(seed).sql
 
 
 #
@@ -56,21 +56,21 @@ seed:
 #
 
 migrate:
-	@hasura migrate apply --project hasura-ecomm --database-name default
+	@hasura migrate apply --project cqrs-v1 --database-name default
 	
 migrate-status:
-	@hasura migrate status --project hasura-ecomm --database-name default
+	@hasura migrate status --project cqrs-v1 --database-name default
 
 
 migrate-up:
-	@hasura migrate apply --project hasura-ecomm --database-name default --up $(steps)
+	@hasura migrate apply --project cqrs-v1 --database-name default --up $(steps)
 
 migrate-down:
-	@hasura migrate apply --project hasura-ecomm --database-name default --down $(steps)
+	@hasura migrate apply --project cqrs-v1 --database-name default --down $(steps)
 
 migrate-redo:
-	@hasura migrate apply --project hasura-ecomm --database-name default --down $(steps)
-	@hasura migrate apply --project hasura-ecomm --database-name default --up $(steps)
+	@hasura migrate apply --project cqrs-v1 --database-name default --down $(steps)
+	@hasura migrate apply --project cqrs-v1 --database-name default --up $(steps)
 
 migrate-create:
 	@hasura migrate create \
@@ -78,5 +78,14 @@ migrate-create:
 		--up-sql "SELECT NOW();" \
 		--down-sql "SELECT NOW();" \
 		--database-name default \
-		--project hasura-ecomm
-	@hasura migrate apply --project hasura-ecomm --database-name default
+		--project cqrs-v1
+	@hasura migrate apply --project cqrs-v1 --database-name default
+
+
+
+#
+# PostgreSQL Metadata Utilities
+#
+
+metadata-export:
+  @hasura metadata export --project cqrs-v1
