@@ -1,3 +1,16 @@
 table:
   schema: public
   name: commands_responses
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - cmd_id
+        - data_in
+        - data_out
+        - cmd_ref
+        - cmd_type
+        - created_at
+        - last_response_at
+      filter: {}
+      limit: 5
